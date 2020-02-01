@@ -24,15 +24,15 @@ void setup() {
 
 void loop() {
 
-  double voltage_sum = 0;
+  float voltage_sum = 0;
 
   for (int i = 0; i < measurements; i++) {
-    double sensorValue = analogRead(sensor_pin);
-    double volt = (sensorValue / input_normalization_factor) * voltage_division_factor;
+    float sensorValue = analogRead(sensor_pin);
+    float volt = (sensorValue / input_normalization_factor) * voltage_division_factor;
     voltage_sum += volt;
   }
 
-  double volt_result = voltage_sum / measurements;
+  float volt_result = voltage_sum / measurements;
   
   Serial.println(volt_result);
 
