@@ -12,6 +12,9 @@ int interval_on_ms = 200;
 
 int measurements = 10;
 
+int voltage_division_factor = 11;
+float input_normalization_factor = 204.6;
+
 void setup() {
   pinMode(green_pin, OUTPUT);
   pinMode(yellow_pin, OUTPUT);
@@ -25,7 +28,7 @@ void loop() {
 
   for (int i = 0; i < measurements; i++) {
     double sensorValue = analogRead(sensor_pin);
-    double volt = (sensorValue / 204.6) * 11;
+    double volt = (sensorValue / input_normalization_factor) * voltage_division_factor;
     voltage_sum += volt;
   }
 
